@@ -12,20 +12,39 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
           rel="stylesheet">
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+
     <link rel="stylesheet" href="./src/style.css">
 </head>
 <body>
 
-IP Address Tracker
-
-Search for any IP address or domain
-
-IP Address
-Location
-Timezone
-UTC <!-- add offset value dynamically using the API -->
-ISP
+<div class="finder">
+    <h1 class="finder__title">IP Address Tracker</h1>
+    <div class="search-bar">
+        <label for="ip-search">
+            <input class="search-bar__input" id="ip-search" type="search"
+                   placeholder="Search for any IP address or domain">
+        </label>
+        <button class="search-bar__btn"></button>
+    </div>
+    <div class="info">
+        <div class="info__block">
+            <div class="info__block-subtitle">IP Address</div>
+            <div class="info__block-title" id="ip"></div>
+        </div>
+        <div class="info__block">
+            <div class="info__block-subtitle">Location</div>
+            <div class="info__block-title" id="location"></div>
+        </div>
+        <div class="info__block">
+            <div class="info__block-subtitle">Timezone</div>
+            <div class="info__block-title" id="timezone"></div>
+        </div>
+        <div class="info__block">
+            <div class="info__block-subtitle">Currency</div>
+            <div class="info__block-title" id="currency"></div>
+        </div>
+    </div>
+</div>
 
 <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
