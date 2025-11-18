@@ -11,6 +11,17 @@ const locationEl = document.getElementById("location")
 const timezoneEl = document.getElementById("timezone")
 const currencyEl = document.getElementById("currency")
 
+let myMap
+
+ymaps.ready(init);
+function init(){
+    myMap = new ymaps.Map("map", {
+        center: [55.76, 37.64],
+        zoom: 7
+    });
+}
+
+
 inputEl.addEventListener("keydown", handleEnter)
 btnEl.addEventListener("click", getData);
 
@@ -27,6 +38,7 @@ async function getData() {
         const data = await response.json();
         console.log(data);
         setData(data)
+
     } catch (error) {
         console.log(error);
     }
@@ -38,4 +50,13 @@ function setData(data) {
     locationEl.innerText = `${location.continent} - ${location.country}`;
     timezoneEl.innerText = timezone.local_time;
     currencyEl.innerText = currency.code
+    const coords = [location.latitude, location.longitude];
+    myMap.geoObjects.removeAll();
+    const placemark = new ymaps.Placemark(coords, {
+        hintContent: 'Метка',
+        balloonContent: `IP: ${ip_address}`
+    });
+    myMap.geoObjects.add(placemark);
+    myMap.setCenter(coords, 15);
+
 }
